@@ -30,13 +30,13 @@
         {
             lblAdicionarTarefas = new Label();
             lblFuncionario = new Label();
-            comboFuncionario = new ComboBox();
+            comboFuncionarios = new ComboBox();
             lblDescricaoTarefa = new Label();
             txtDescricaoTarefa = new TextBox();
             lblData = new Label();
-            txtData = new TextBox();
+            txtData = new DateTimePicker();
             lblHora = new Label();
-            txtHora = new TextBox();
+            txtHora = new DateTimePicker();
             btnCancelar = new Button();
             btnAdicionar = new Button();
             SuspendLayout();
@@ -61,13 +61,13 @@
             lblFuncionario.TabIndex = 1;
             lblFuncionario.Text = "Funcionário";
             // 
-            // comboFuncionario
+            // comboFuncionarios
             // 
-            comboFuncionario.FormattingEnabled = true;
-            comboFuncionario.Location = new Point(12, 96);
-            comboFuncionario.Name = "comboFuncionario";
-            comboFuncionario.Size = new Size(358, 23);
-            comboFuncionario.TabIndex = 2;
+            comboFuncionarios.FormattingEnabled = true;
+            comboFuncionarios.Location = new Point(12, 96);
+            comboFuncionarios.Name = "comboFuncionarios";
+            comboFuncionarios.Size = new Size(358, 23);
+            comboFuncionarios.TabIndex = 2;
             // 
             // lblDescricaoTarefa
             // 
@@ -99,10 +99,12 @@
             // 
             // txtData
             // 
+            txtData.Format = DateTimePickerFormat.Short;
             txtData.Location = new Point(424, 96);
             txtData.Name = "txtData";
             txtData.Size = new Size(142, 23);
             txtData.TabIndex = 6;
+            txtData.Value = new DateTime(2024, 6, 2, 11, 53, 21, 828);
             // 
             // lblHora
             // 
@@ -116,6 +118,7 @@
             // 
             // txtHora
             // 
+            txtHora.Format = DateTimePickerFormat.Time;
             txtHora.Location = new Point(625, 96);
             txtHora.Name = "txtHora";
             txtHora.Size = new Size(133, 23);
@@ -154,7 +157,7 @@
             Controls.Add(lblData);
             Controls.Add(txtDescricaoTarefa);
             Controls.Add(lblDescricaoTarefa);
-            Controls.Add(comboFuncionario);
+            Controls.Add(comboFuncionarios);
             Controls.Add(lblFuncionario);
             Controls.Add(lblAdicionarTarefas);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -171,15 +174,16 @@
 
         #endregion
 
+
         private Label lblAdicionarTarefas;
         private Label lblFuncionario;
-        private ComboBox comboFuncionario;
+        private ComboBox comboFuncionarios;
         private Label lblDescricaoTarefa;
         private TextBox txtDescricaoTarefa;
         private Label lblData;
-        private TextBox txtData;
+        private DateTimePicker txtData;
         private Label lblHora;
-        private TextBox txtHora;
+        private DateTimePicker txtHora;
         private Button btnCancelar;
         private Button btnAdicionar;
     }

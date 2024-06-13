@@ -27,9 +27,21 @@ namespace ControleDeTarefas
             frm.ShowDialog();
         }
 
-        private void adicionarToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void alterarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormAdicionarFuncionario frm = new FormAdicionarFuncionario();
+            FormTarefasAlterar frm = new FormTarefasAlterar();
+            frm.ShowDialog();
+        }
+
+        private void pesquisarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormTarefasPesquisar frm = new FormTarefasPesquisar();
+            frm.ShowDialog();
+        }
+
+        private void manutençãoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormFuncionariosManutencao frm = new FormFuncionariosManutencao();
             frm.ShowDialog();
         }
     }

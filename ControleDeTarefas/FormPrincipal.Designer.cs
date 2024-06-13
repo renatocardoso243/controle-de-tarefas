@@ -38,9 +38,6 @@
             pesquisarToolStripMenuItem = new ToolStripMenuItem();
             funcionáriosToolStripMenuItem = new ToolStripMenuItem();
             manutençãoToolStripMenuItem = new ToolStripMenuItem();
-            adicionarToolStripMenuItem1 = new ToolStripMenuItem();
-            alterarToolStripMenuItem1 = new ToolStripMenuItem();
-            pesquisarToolStripMenuItem1 = new ToolStripMenuItem();
             sobreToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -90,12 +87,14 @@
             alterarToolStripMenuItem.Name = "alterarToolStripMenuItem";
             alterarToolStripMenuItem.Size = new Size(125, 22);
             alterarToolStripMenuItem.Text = "Alterar";
+            alterarToolStripMenuItem.Click += alterarToolStripMenuItem_Click;
             // 
             // pesquisarToolStripMenuItem
             // 
             pesquisarToolStripMenuItem.Name = "pesquisarToolStripMenuItem";
             pesquisarToolStripMenuItem.Size = new Size(125, 22);
             pesquisarToolStripMenuItem.Text = "Pesquisar";
+            pesquisarToolStripMenuItem.Click += pesquisarToolStripMenuItem_Click;
             // 
             // funcionáriosToolStripMenuItem
             // 
@@ -107,29 +106,10 @@
             // 
             // manutençãoToolStripMenuItem
             // 
-            manutençãoToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { adicionarToolStripMenuItem1, alterarToolStripMenuItem1, pesquisarToolStripMenuItem1 });
             manutençãoToolStripMenuItem.Name = "manutençãoToolStripMenuItem";
-            manutençãoToolStripMenuItem.Size = new Size(180, 22);
+            manutençãoToolStripMenuItem.Size = new Size(141, 22);
             manutençãoToolStripMenuItem.Text = "Manutenção";
-            // 
-            // adicionarToolStripMenuItem1
-            // 
-            adicionarToolStripMenuItem1.Name = "adicionarToolStripMenuItem1";
-            adicionarToolStripMenuItem1.Size = new Size(180, 22);
-            adicionarToolStripMenuItem1.Text = "Adicionar";
-            adicionarToolStripMenuItem1.Click += adicionarToolStripMenuItem1_Click;
-            // 
-            // alterarToolStripMenuItem1
-            // 
-            alterarToolStripMenuItem1.Name = "alterarToolStripMenuItem1";
-            alterarToolStripMenuItem1.Size = new Size(180, 22);
-            alterarToolStripMenuItem1.Text = "Alterar";
-            // 
-            // pesquisarToolStripMenuItem1
-            // 
-            pesquisarToolStripMenuItem1.Name = "pesquisarToolStripMenuItem1";
-            pesquisarToolStripMenuItem1.Size = new Size(180, 22);
-            pesquisarToolStripMenuItem1.Text = "Pesquisar";
+            manutençãoToolStripMenuItem.Click += manutençãoToolStripMenuItem_Click;
             // 
             // sobreToolStripMenuItem
             // 
@@ -146,7 +126,6 @@
             BackgroundImageLayout = ImageLayout.Center;
             ClientSize = new Size(1172, 705);
             Controls.Add(menuStrip1);
-            IsMdiContainer = true;
             MainMenuStrip = menuStrip1;
             Name = "FormPrincipal";
             Text = "Controle de Tarefas";
@@ -169,8 +148,5 @@
         private ToolStripMenuItem funcionáriosToolStripMenuItem;
         private ToolStripMenuItem manutençãoToolStripMenuItem;
         private ToolStripMenuItem sobreToolStripMenuItem;
-        private ToolStripMenuItem adicionarToolStripMenuItem1;
-        private ToolStripMenuItem alterarToolStripMenuItem1;
-        private ToolStripMenuItem pesquisarToolStripMenuItem1;
     }
 }

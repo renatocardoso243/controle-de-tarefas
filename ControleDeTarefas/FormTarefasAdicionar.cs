@@ -14,12 +14,33 @@ namespace ControleDeTarefas
 {
     public partial class FormTarefasAdicionar : Form
     {
+        private Database database;
+
         public FormTarefasAdicionar()
         {
             InitializeComponent();
-            ListarFuncionarios();
+            string connectionString = "server=localhost;user=root;password=1234;database=pcomercial;";
+            database = new Database(connectionString);
+            LoadFuncionarios();
         }
 
+        private void LoadFuncionarios()
+        {
+            database.ExecuteQuery(command =>
+            {
+                command.CommandText = "SELECT codigo, nome FROM funcionarios";
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        comboFuncionarios.Items.Add(new { Text = reader["nome"].ToString(), Value = reader["codigo"] });
+                    }
+                }
+            });
+
+            comboFuncionarios.DisplayMember = "Text";
+            comboFuncionarios.ValueMember = "Value";
+        }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
@@ -28,75 +49,41 @@ namespace ControleDeTarefas
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            //dados text box
-            string funcionario = comboFuncionario.Text;
-            string data = txtData.Text;
-            string hora = txtHora.Text;
-            string descricao = txtDescricaoTarefa.Text;
-
-
-            //Usando a classe banco para realizar conexão com bd.
-            using (MySqlConnection conn = Banco.GetConnection())
+            DialogResult res = MessageBox.Show("Tem certeza que deseja adicionar a tarefa?","Controle de Tarefas", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (res == DialogResult.Yes)
             {
-                try
-                {
-                    Banco.OpenConnection(conn);
+                int funcionarioCod = ((dynamic)comboFuncionarios.SelectedItem).Value;
+                string dataTarefa = txtData.Value.ToString("yyy-MM-dd");
+                string hora = txtHora.Value.ToString("HH:mm");
+                string descricao = txtDescricaoTarefa.Text;
+                bool concluido = false;
 
-                    string query = "INSERT INTO tarefas (funcionario, data_tarefa, hora, descricao) VALUES (@Funcionario, @Data, @Hora, @Descricao)";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@Funcionario", funcionario);
-                        cmd.Parameters.AddWithValue("@Data", data);
-                        cmd.Parameters.AddWithValue("@Hora", hora);
-                        cmd.Parameters.AddWithValue("@Descricao", descricao);
-                        cmd.ExecuteNonQuery();
-                    }
+                database.ExecuteQuery(command =>
+                {
+                    command.CommandText = "INSERT INTO tarefas (funcionario, data_tarefa, hora, descricao, concluido) VALUES (@funcionario, @data_tarefa, @hora, @descricao, @concluido)";
+                    command.Parameters.AddWithValue("@funcionario", funcionarioCod);
+                    command.Parameters.AddWithValue("@data_tarefa", dataTarefa);
+                    command.Parameters.AddWithValue("@hora", hora);
+                    command.Parameters.AddWithValue("@descricao", descricao);
+                    command.Parameters.AddWithValue("@concluido", concluido);
+                    command.ExecuteNonQuery();
+                });
 
-                    MessageBox.Show("Tarefa gravada com sucesso!");
-                }
-                catch (Exception ex)
+                MessageBox.Show("Tarefa adicionada com sucesso!");
+                res = MessageBox.Show("Deseja adicionar uma nova tarefa?","Controle de Tarefas", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (res == DialogResult.Yes)
                 {
-                    MessageBox.Show("Erro:" + ex.Message);
+                    comboFuncionarios.SelectedIndex = 0;
+                    txtDescricaoTarefa.Clear();
+                   
                 }
-                finally
+                else
                 {
-                    Banco.CloseConnection(conn);
-                }
-            }
-
-        }
-        private void ListarFuncionarios()
-        {
-            using (MySqlConnection conn = Banco.GetConnection())
-            {
-                try
-                {
-                    Banco.OpenConnection (conn);
-
-                    string query = "SELECT nome FROM funcionarios";
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        using (MySqlDataReader reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                comboFuncionario.Items.Add(reader.GetString("nome"));
-                            }
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Erro: " + ex.Message);
-                }
-                finally
-                {
-                    Banco.CloseConnection (conn);
+                    this.Close();
                 }
             }
         }
 
+ 
     }
-
-
 }

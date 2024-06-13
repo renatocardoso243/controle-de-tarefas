@@ -1,6 +1,6 @@
 ﻿namespace ControleDeTarefas
 {
-    partial class FormAdicionarFuncionario
+    partial class FormFuncionariosCadastrar
     {
         /// <summary>
         /// Required designer variable.
@@ -28,101 +28,109 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblCadastrarFuncionario = new Label();
+            lblNovoFuncionario = new Label();
             lblNome = new Label();
-            textNome = new TextBox();
+            txtNome = new TextBox();
             lblCargo = new Label();
-            textCargo = new TextBox();
+            txtCargo = new TextBox();
             btnCadastrar = new Button();
+            btnCancelar = new Button();
             SuspendLayout();
             // 
-            // lblCadastrarFuncionario
+            // lblNovoFuncionario
             // 
-            lblCadastrarFuncionario.AutoSize = true;
-            lblCadastrarFuncionario.Font = new Font("Sans Serif Collection", 15.75F, FontStyle.Bold);
-            lblCadastrarFuncionario.Location = new Point(12, 9);
-            lblCadastrarFuncionario.Name = "lblCadastrarFuncionario";
-            lblCadastrarFuncionario.Size = new Size(394, 52);
-            lblCadastrarFuncionario.TabIndex = 0;
-            lblCadastrarFuncionario.Text = "Cadastrar Funcionário";
+            lblNovoFuncionario.AutoSize = true;
+            lblNovoFuncionario.Font = new Font("Sans Serif Collection", 15.75F, FontStyle.Bold);
+            lblNovoFuncionario.Location = new Point(231, 48);
+            lblNovoFuncionario.Name = "lblNovoFuncionario";
+            lblNovoFuncionario.Size = new Size(315, 52);
+            lblNovoFuncionario.TabIndex = 0;
+            lblNovoFuncionario.Text = "Novo Funcionário";
             // 
             // lblNome
             // 
             lblNome.AutoSize = true;
-            lblNome.Font = new Font("Segoe UI", 18F);
-            lblNome.Location = new Point(154, 162);
+            lblNome.Font = new Font("Segoe UI", 12F);
+            lblNome.Location = new Point(137, 146);
             lblNome.Name = "lblNome";
-            lblNome.Size = new Size(80, 32);
+            lblNome.Size = new Size(53, 21);
             lblNome.TabIndex = 1;
             lblNome.Text = "Nome";
             // 
-            // textNome
+            // txtNome
             // 
-            textNome.Font = new Font("Segoe UI", 18F);
-            textNome.Location = new Point(240, 159);
-            textNome.Name = "textNome";
-            textNome.Size = new Size(352, 39);
-            textNome.TabIndex = 2;
+            txtNome.Location = new Point(196, 146);
+            txtNome.Name = "txtNome";
+            txtNome.Size = new Size(429, 23);
+            txtNome.TabIndex = 2;
             // 
             // lblCargo
             // 
             lblCargo.AutoSize = true;
-            lblCargo.Font = new Font("Segoe UI", 18F);
-            lblCargo.Location = new Point(154, 219);
+            lblCargo.Font = new Font("Segoe UI", 12F);
+            lblCargo.Location = new Point(140, 190);
             lblCargo.Name = "lblCargo";
-            lblCargo.Size = new Size(77, 32);
+            lblCargo.Size = new Size(52, 21);
             lblCargo.TabIndex = 3;
             lblCargo.Text = "Cargo";
             // 
-            // textCargo
+            // txtCargo
             // 
-            textCargo.Font = new Font("Segoe UI", 18F);
-            textCargo.Location = new Point(240, 216);
-            textCargo.Name = "textCargo";
-            textCargo.Size = new Size(352, 39);
-            textCargo.TabIndex = 4;
+            txtCargo.Location = new Point(198, 190);
+            txtCargo.Name = "txtCargo";
+            txtCargo.Size = new Size(427, 23);
+            txtCargo.TabIndex = 4;
             // 
             // btnCadastrar
             // 
-            btnCadastrar.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCadastrar.Location = new Point(319, 317);
+            btnCadastrar.Location = new Point(296, 238);
             btnCadastrar.Name = "btnCadastrar";
-            btnCadastrar.Size = new Size(165, 45);
+            btnCadastrar.Size = new Size(90, 32);
             btnCadastrar.TabIndex = 5;
             btnCadastrar.Text = "Cadastrar";
             btnCadastrar.UseVisualStyleBackColor = true;
             btnCadastrar.Click += btnCadastrar_Click;
             // 
-            // FormAdicionarFuncionario
+            // btnCancelar
+            // 
+            btnCancelar.Location = new Point(392, 238);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(90, 32);
+            btnCancelar.TabIndex = 6;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
+            // 
+            // FormFuncionariosCadastrar
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnCancelar);
             Controls.Add(btnCadastrar);
-            Controls.Add(textCargo);
+            Controls.Add(txtCargo);
             Controls.Add(lblCargo);
-            Controls.Add(textNome);
+            Controls.Add(txtNome);
             Controls.Add(lblNome);
-            Controls.Add(lblCadastrarFuncionario);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Controls.Add(lblNovoFuncionario);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "FormAdicionarFuncionario";
+            Name = "FormFuncionariosCadastrar";
             ShowIcon = false;
-            ShowInTaskbar = false;
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Adicionar :: Funcionário";
+            Text = "Manutenção :: Cadastro Funcionário";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label lblCadastrarFuncionario;
+        private Label lblNovoFuncionario;
         private Label lblNome;
-        private TextBox textNome;
+        private TextBox txtNome;
         private Label lblCargo;
-        private TextBox textCargo;
+        private TextBox txtCargo;
         private Button btnCadastrar;
+        private Button btnCancelar;
     }
 }
